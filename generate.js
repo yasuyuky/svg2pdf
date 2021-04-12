@@ -12,7 +12,7 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const page = await browser.newPage();
   await page.goto(`file:${path.join(process.cwd(), args[0])}`);
   await page.waitForLoadState("domcontentloaded");
-  await sleep(5000);
+  await sleep(1000);
   await page.pdf({ path: path.join(process.cwd(), args[1]) });
   await browser.close();
 })();
