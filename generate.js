@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { chromium } = require("playwright-chromium");
 const path = require("path");
 const process = require("process");
