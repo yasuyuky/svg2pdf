@@ -1,0 +1,22 @@
+{
+  "name": "svg2pdf",
+  "version": "0.0.1",
+  "description": "Translate svg to pdf",
+  "main": "generate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yasuyuky/svg2pdf.git"
+  },
+  "author": "yasuyuky <yasuyuki.ymd@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yasuyuky/svg2pdf/issues"
+  },
+  "homepage": "https://github.com/yasuyuky/svg2pdf#readme",
+  "dependencies": {
+    "playwright-chromium": "^1.10.0"
+  }
+}
