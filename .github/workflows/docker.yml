@@ -12,7 +12,7 @@ jobs:
       - name: Build and push the docker image to ghcr.io
         run: |
           echo $CR_PAT | docker login ghcr.io -u yasuyuky --password-stdin
-          docker build . -t ghcr.io/yasuyuky/svg2pdf:latest
+          docker build -f Dockerfile.ja_JP . -t ghcr.io/yasuyuky/svg2pdf:latest
           docker push -a ghcr.io/yasuyuky/svg2pdf
         env:
           CR_PAT: ${{ secrets.CR_PAT }}
