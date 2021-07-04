@@ -10,8 +10,10 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 program.addOption(
   new Option("-f, --format <format>").choices(["pdf", "png"]).default("pdf")
 );
+program.addOption(new Option("-p, --pp <pageRanges>").default("1"));
 
-program.arguments("<input> <output>").action(async (input, output, format) => {
+program.arguments("<input> <output>");
+program.action(async (input, output, format, pageRanges) => {
   const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto(`file:${path.join(process.cwd(), input)}`);
@@ -23,7 +25,7 @@ program.arguments("<input> <output>").action(async (input, output, format) => {
   const outputPath = path.join(process.cwd(), output);
   if (format == "png")
     await page.screenshot({ path: outputPath, width, height, fullPage: true });
-  else await page.pdf({ path: outputPath, width, height });
+  else await page.pdf({ path: outputPath, width, height, pageRanges });
   await browser.close();
 });
 program.parse();
