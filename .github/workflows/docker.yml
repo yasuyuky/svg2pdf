@@ -2,17 +2,29 @@ name: docker
 
 on:
   push:
-    branches: main
+    branches:
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: svg2pdf
 
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Build and push the docker image to ghcr.io
-        run: |
-          echo $CR_PAT | docker login ghcr.io -u yasuyuky --password-stdin
-          docker build -f Dockerfile.ja_JP . -t ghcr.io/yasuyuky/svg2pdf:latest
-          docker push -a ghcr.io/yasuyuky/svg2pdf
-        env:
-          CR_PAT: ${{ secrets.CR_PAT }}
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile.ja_JP
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
