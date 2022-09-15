@@ -30,6 +30,6 @@ jobs:
           context: .
           file: Dockerfile.ja_JP
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
