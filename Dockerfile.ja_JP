@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:bionic
+FROM mcr.microsoft.com/playwright:jammy
 
 RUN apt-get update && \
     apt-get -y install locales fonts-ipafont fonts-ipaexfont && \
