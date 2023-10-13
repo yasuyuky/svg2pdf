@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/yasuyuky/svg2pdf#readme",
   "dependencies": {
-    "commander": "^11.0.0",
+    "commander": "^11.1.0",
     "playwright-chromium": "^1.39.0"
   }
 }
